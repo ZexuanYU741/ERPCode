@@ -12,7 +12,7 @@ dominant_class_freq <- table(dominant_class)
 
 shannon_diversity <- apply(data, 1, function(x) {
   p <- x/sum(x)
-  -sum(p * log(p + 1e-10))  # 加一个小值避免log(0)
+  -sum(p * log(p + 1e-10))  
 })
 
 class_df <- data.frame(
@@ -25,4 +25,5 @@ ggplot(class_df, aes(x = Class, y = Count, fill = Class)) +
   geom_bar(stat = "identity") +
   geom_text(aes(label = Count), vjust = -0.5) +
   labs(title = "The distribution of Classes", x = "Class", y = "Number of occurrences") +
+
   theme_minimal()
